@@ -109,3 +109,8 @@
   apt:
     pkg: vsftpd
     state: present
+
+- name: Install Dropbox
+  include: dropbox.yml
+  when: ansible_distribution == 'Ubuntu'
+  tags: ["packages", "dropbox"]
