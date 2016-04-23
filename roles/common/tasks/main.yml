@@ -1,0 +1,17 @@
+---
+
+- name: Install essential packages
+  become: yes
+  become_method: sudo
+  apt:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+    - vim
+    - emacs
+    - git
+    - wget
+    - htop
+    - unzip
+    - unrar-free
+    - htop

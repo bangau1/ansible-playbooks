@@ -1,0 +1,22 @@
+---
+
+- name: Install JDK 8
+  become: yes
+  become_method: sudo
+  apt:
+    pkg: openjdk-8-jdk
+    state: present
+
+- name: Install Java Build Tools
+  become: yes
+  become_method: sudo
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+  with_items:
+    - gradle
+    - maven
+
+# - name: Check IntelliJ Idea
+#   shell: |
+#     

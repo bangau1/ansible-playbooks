@@ -1,0 +1,14 @@
+---
+
+- name: Install Essential Packages
+  become: yes
+  become_method: sudo
+  apt:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+    - git
+    - python-pip
+    - python-setuptools
+    - gitk
+    - git-gui

@@ -1,0 +1,21 @@
+---
+
+- hosts: all
+  roles:
+    - role: common
+
+- hosts: personal-machines
+  become: yes
+  become_method: sudo
+  roles:
+    - role: personal-machines
+
+- hosts: development-machines
+  roles:
+    - role: development-common
+    - role: development-java
+    # - role: docker
+
+- hosts: all
+  roles:
+    - role: cleanup
