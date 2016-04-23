@@ -92,18 +92,18 @@
     - xboard
 
     # Utilities
-    - bluez
-    - ppp
-    - gnome-orca
-    - gnome-accessibility-themes
-    - vino
-    - espeak-data
-    - libespeak1
-    - icedove
+    # - bluez
+    # - ppp
+    # - gnome-orca
+    # - gnome-accessibility-themes
+    # - vino
+    # - espeak-data
+    # - libespeak1
+    # - icedove
     - thunderbird
-    - totem
-    - totem-common
-    - totem-plugins
+    # - totem
+    # - totem-common
+    # - totem-plugins
 
 - name: Install Home Network Connectivity Packages
   apt:

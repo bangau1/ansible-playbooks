@@ -1,14 +1,14 @@
 ---
 
-- name: Check if packages need to be autoremoved
-  command: apt-get --dry-run autoremove
-  register: check_autoremove
-  changed_when: check_autoremove.rc != 0
-  become: yes
-  become_method: sudo
+# - name: Check if packages need to be autoremoved
+#   command: apt-get --dry-run autoremove
+#   register: check_autoremove
+#   changed_when: check_autoremove.rc != 0
+#   become: yes
+#   become_method: sudo
 
-- name: Autoremove unused packages
-  command: apt-get -y autoremove
-  when: "'packages will be REMOVED' in check_autoremove.stdout"
-  become: yes
-  become_method: sudo
+# - name: Autoremove unused packages
+#   command: apt-get -y autoremove
+#   when: "'packages will be REMOVED' in check_autoremove.stdout"
+#   become: yes
+#   become_method: sudo
