@@ -17,6 +17,7 @@
     - gradle
     - maven
 
-# - name: Check IntelliJ Idea
-#   shell: |
-#     
+- include: idea.yml
+  become: yes
+  become_user: agung
+  become_method: su

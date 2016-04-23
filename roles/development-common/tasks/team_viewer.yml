@@ -1,0 +1,22 @@
+---
+
+- name: Check If Team Viewer Exists
+  become: yes
+  shell: "dpkg-query -W teamviewer_i386.deb"
+  register: team_viewer_check_deb
+  failed_when: team_viewer_check_deb.rc > 1
+  changed_when: team_viewer_check_deb.rc == 1
+
+- name: Download Team Viewer Deb
+  become: false
+  get_url:
+    url: http://download.teamviewer.com/download/teamviewer_i386.deb
+    dest: ~/Downloads/teamviewer_i386.deb
+  when: team_viewer_check_deb.rc == 1
+  register: download_result
+
+- name: Install Team Viewer
+  apt:
+    deb: "{{ download_result.dest }}"
+  become: yes
+  when: team_viewer_check_deb.rc == 1

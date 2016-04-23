@@ -1,0 +1,6 @@
+---
+
+- hosts: development-machines
+  roles:
+    - role: development-common
+    - role: development-java

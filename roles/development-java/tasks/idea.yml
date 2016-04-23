@@ -1,0 +1,41 @@
+---
+
+- name: Check IntelliJ Idea Exists
+  shell: which idea.sh
+  register: idea_path
+  changed_when: idea_path.rc == 1
+  failed_when: idea_path.rc > 1
+
+- name: Which Idea Command Output
+  debug: var=idea_path
+
+# - name: Check If IntelliJ Package Exists
+#   stat:
+#     path: ~/Downloads/ideaIC-2016.1.1.tar.gz
+#     checksum_algorithm: sha256
+#   register: idea_stat_result
+
+# - debug: var=idea_stat_result
+
+- name: Check If ~/Downloads/ Folder Writeable
+  shell: echo "Test" > ~/Downloads/.test.txt
+
+# - debug: 
+#     msg: "Output: '{{ idea_stat_result.stat.exists }}' "
+
+
+# - debug: 
+#     msg: "Output: '{{ idea_stat_result.stat|checksum }}' "
+
+- name: Download IntelliJ If Not Exists
+  get_url:
+    url: "https://download.jetbrains.com/idea/ideaIC-2016.1.1.tar.gz"
+    dest: ~/Downloads/ideaIC-2016.1.1.tar.gz
+    checksum: "sha256:46adaa6e19a605d2b439b0b58d18723b7947c1c56e4bbc142396a2b911de13e4"
+  register: downloaded_idea 
+
+# - name: Extract Downloaded IntelliJ Package
+#   become: False
+#   unarchive:
+#     src: "{{ downloaded_idea.dest }}"
+#     dest: ~/Dev/tools/
