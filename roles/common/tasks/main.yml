@@ -15,3 +15,13 @@
     - unzip
     - unrar-free
     - htop
+
+- name: Install Ex-Fat Utilities
+  become: yes
+  become_method: sudo
+  apt:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+    - exfat-fuse
+    - exfat-utils
