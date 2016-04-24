@@ -17,7 +17,5 @@
     - gradle
     - maven
 
-- include: idea.yml
-  become: yes
-  become_user: agung
-  become_method: su
+- name: Install IntelliJ
+  include: idea.yml

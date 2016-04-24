@@ -1,6 +1,7 @@
 ---
 
 - name: Check IntelliJ Idea Exists
+  become: false
   shell: which idea.sh
   register: idea_path
   changed_when: idea_path.rc == 1
@@ -18,6 +19,7 @@
 # - debug: var=idea_stat_result
 
 - name: Check If ~/Downloads/ Folder Writeable
+  become: false
   shell: echo "Test" > ~/Downloads/.test.txt
 
 # - debug: 
@@ -28,6 +30,7 @@
 #     msg: "Output: '{{ idea_stat_result.stat|checksum }}' "
 
 - name: Download IntelliJ If Not Exists
+  become: false
   get_url:
     url: "https://download.jetbrains.com/idea/ideaIC-2016.1.1.tar.gz"
     dest: ~/Downloads/ideaIC-2016.1.1.tar.gz
