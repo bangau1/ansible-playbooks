@@ -114,3 +114,8 @@
   include: dropbox.yml
   when: ansible_distribution == 'Ubuntu'
   tags: ["packages", "dropbox"]
+
+- name: Install Telegram
+  include: telegram.yml
+  when: ansible_distribution == 'Ubuntu'
+  tags: ["packages", "telegram"]
